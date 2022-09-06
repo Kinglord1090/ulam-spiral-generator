@@ -21,29 +21,41 @@ keshar.shape(shapes[random.randrange(len(shapes))])
 #turtle.tracer(0, 0)
 
 
-if random.randrange(2) == 0:
-	keshar.penup()
-
-for i in range(1, 51):
-	for j in range(i):
-		keshar.color("white")
-		keshar.forward(10)
-		value += 1
-		for x in range(2, value):
-			if x <= int(value / 2):
-				if value % x == 0:
-					flag = True
-					break
-				else:
-					i += 1
-			else:
+def isPrime(value, color):
+	flag = False
+	for x in range(2, value):
+		if x <= int(value / 2):
+			if value % x == 0:
+				flag = True
 				break
-		if flag != True:
-			keshar.color(colorsys.hsv_to_rgb(color, 1, 1))
-			keshar.stamp()
-			color += random.randrange(5, 21) / 1000
-		flag = False
-	keshar.left(90)
+		else:
+			break
+	if flag != True:
+		keshar.color(colorsys.hsv_to_rgb(color, 1, 1))
+		keshar.stamp()
+		color += random.randrange(5, 21) / 1000
+	return color
+
+def shapeSquare(value, color, flag):
+	for i in range(1, 51):
+		for j in range(i):
+			keshar.color("white")
+			keshar.forward(10)
+			value += 1
+			color = isPrime(value, color)
+		keshar.left(90)
+
+def shapeCircle(value, color, flag):
+	for i in range(300):
+		keshar.circle(i, 20)
+		color = isPrime(value, color)
+
+if random.randrange(2) == 0:
+	shapeSquare(value, color, flag)
+	if random.randrange(2) == 0:
+		keshar.penup()
+else:
+	shapeCircle(value, color, flag)
 
 #turtle.update()
 turtle.done()
