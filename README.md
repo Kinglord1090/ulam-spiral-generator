@@ -15,7 +15,7 @@ This project generates artistic patterns by plotting prime numbers in a spiral f
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/ulam-spiral-generator.git
+    git clone https://github.com/Kinglord1090/ulam-spiral-generator.git
     ```
 2. Install the required Python libraries:
     ```bash
